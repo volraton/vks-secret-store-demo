@@ -6,4 +6,4 @@ Current child application:
 
 - `demo.yaml` -> deploys `k8s/` into the `demo` namespace
 
-The AppProject is created separately from `argocd/project/vks-demo-project.yaml`.
+The AppProject is created separately from `argocd/project.yaml` (see step 10.1 in the main README).

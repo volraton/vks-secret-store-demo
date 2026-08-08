@@ -867,6 +867,9 @@ This is expected when the secret is injected into environment variables. Updatin
 - Restrict the Argo CD AppProject to the required repository, namespaces, and resource types.
 - Use TLS and proper certificates for production application access.
 - Use the VCF/VKS-supported load-balancer integration for production rather than adding an unrelated load-balancer implementation inside the cluster.
+- `k8s/networkpolicy.yaml` restricts PostgreSQL ingress to the Flask app pods only; adjust or extend it if you add more workloads to the `demo` namespace.
+- `k8s/postgres.yaml` now provisions a `PersistentVolumeClaim` so pod restarts (including the ones used to demonstrate secret rotation) don't lose data. It uses the namespace's default `StorageClass`; set `storageClassName` explicitly if your environment requires it.
+- Both Deployments carry a `reloader.stakater.com/auto: "true"` annotation. If you install [Stakater Reloader](https://github.com/stakater/Reloader) in the cluster, Pods restart automatically when `db-credentials` changes, so the secret-rotation demo no longer needs a manual `kubectl rollout restart`. Without Reloader installed the annotation is inert and the manual restart steps in this README still apply.
 
 ---
 

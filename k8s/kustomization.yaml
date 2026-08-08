@@ -5,3 +5,5 @@ resources:
   - external-secret.yaml
   - postgres.yaml
   - app.yaml
+  - loadbalancer.yaml
+  - networkpolicy.yaml

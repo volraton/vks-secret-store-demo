@@ -12,6 +12,8 @@ spec:
     metadata:
       labels:
         app: secret-demo
+      annotations:
+        reloader.stakater.com/auto: "true"
     spec:
       containers:
         - name: app
@@ -19,6 +21,13 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
+          resources:
+            requests:
+              cpu: 50m
+              memory: 128Mi
+            limits:
+              cpu: 250m
+              memory: 256Mi
           env:
             - name: DB_HOST
               value: postgres
