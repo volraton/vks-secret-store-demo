@@ -1,0 +1,11 @@
+# Illustrative values only.
+# Use the Pinniped/VKS configuration format required by the exact release
+# installed in your environment. Do not put a real client secret in Git.
+identityProvider:
+  issuer: https://<OIDC-ISSUER>
+  clientID: <OIDC-CLIENT-ID>
+  clientSecret: <OIDC-CLIENT-SECRET>
+
+# Example identity/group used by the RBAC demonstration.
+runtime:
+  demoGroup: vks-demo-users
