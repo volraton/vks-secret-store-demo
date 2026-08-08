@@ -2,6 +2,8 @@
 
 A practical VMware Cloud Foundation 9 / VKS lab covering **Secret Store, GitOps, Argo CD App-of-Apps, PostgreSQL, Flask, and VCF Foundation Load Balancer services**.
 
+![VCF 9 VKS Secret Store Demo Architecture](docs/architecture.svg)
+
 ## What this demo covers
 
 - VMware Cloud Foundation 9.x
@@ -32,44 +34,31 @@ Password: VMware123!
 
 > This repository is public. `VMware123!` is intentionally a disposable lab password. Never use it in production.
 
----
+## Architecture
 
-# Architecture
+The block diagram above is the primary architecture view. The logical flow is:
 
 ```text
-                         VMware Cloud Foundation 9
-                                      |
-                     +----------------+----------------+
-                     |                                 |
-              vSphere Supervisor                      VKS
-                     |                                 |
-          +----------+----------+              +-------+-------+
-          |                     |              |               |
- Secret Store Service      Foundation LB       Argo CD       Workloads
-          |                     |              |               |
-        OpenBao                |          App-of-Apps            |
-          |                     |              |                 |
-      demo-db secret            |          Child App             |
-          |                     |              |                 |
-          +-----------> ExternalSecret <------+-----------------+
-                              |
-                         db-credentials
-                              |
-                    +---------+---------+
-                    |                   |
-                  Flask             PostgreSQL
-                    |
-                    v
-              Service: LoadBalancer
-                    |
-                    v
-          VCF Foundation Load Balancer
-                    |
-                    v
-                  Client
+GitHub
+  |
+  v
+Argo CD App-of-Apps
+  |
+  v
+VKS
+  +-------------------+
+  | Flask              |<------ VCF Foundation Load Balancer / VIP
+  | PostgreSQL         |
+  | ExternalSecret     |
+  +---------+----------+
+            ^
+            |
+      VCF Secret Store
+            |
+         OpenBao
 ```
 
-## Separation of responsibilities
+### Separation of responsibilities
 
 ```text
 GitHub / Argo CD
@@ -110,6 +99,9 @@ vks-secret-store-demo/
 |   +-- app.py
 |   +-- requirements.txt
 |   +-- Dockerfile
+|
++-- docs/
+|   +-- architecture.svg
 |
 +-- k8s/
 |   +-- namespace.yaml
