@@ -36,7 +36,7 @@ Optional identity/authentication layer. It demonstrates who the user is and what
 
 See `../addons/pinniped/README.md`.
 
-## Option 4 — Shared Secret + Network Path
+## Option 4 — Shared Secret + Foundation Network Path
 
 Both GitOps and non-GitOps modes use the same runtime pattern:
 
@@ -61,9 +61,57 @@ This makes the architecture easy to explain:
 | Exposure | VCF Foundation Load Balancer |
 | Application | Flask + PostgreSQL |
 
+## Option 5 — AVI / NSX Advanced Load Balancer
+
+Use AVI Load Balancer / NSX Advanced Load Balancer as the external load-balancing implementation while keeping the Kubernetes `Service type: LoadBalancer` contract.
+
+![AVI Load Balancer Option](avi-lb/architecture.svg)
+
+```text
+Client
+  │
+  ▼
+AVI Load Balancer / NSX Advanced Load Balancer
+  │
+  │ Virtual Service / VIP
+  ▼
+VKS Service: LoadBalancer
+  │
+  ▼
+Flask
+  │
+  ▼
+PostgreSQL
+```
+
+This option is useful when the workshop needs to demonstrate:
+
+- AVI/NSX Advanced Load Balancer integration
+- Virtual Service / VIP
+- Kubernetes `Service type: LoadBalancer`
+- External application traffic management
+- Separation between Kubernetes service intent and the LB implementation
+
+The application and VCF Secret Store flow do not need to change.
+
+> **Version note:** AVI/NSX ALB annotations, controller objects, IPAM, cloud configuration, and service-engine behavior are release/environment dependent. Do not hard-code an annotation from another VKS/VCF release. Use the integration supported by the installed version.
+
+See `avi-lb/README.md` for the detailed option and troubleshooting flow.
+
+## Foundation LB vs AVI
+
+| | Foundation Load Balancer | AVI / NSX Advanced Load Balancer |
+|---|---|---|
+| Kubernetes API | `Service: LoadBalancer` | `Service: LoadBalancer` |
+| External endpoint | Foundation/platform VIP | AVI Virtual Service / VIP |
+| Main purpose | Standard VCF platform exposure | Advanced LB integration demo |
+| Application changes | None | None |
+| Secret Store changes | None | None |
+
 ## Recommended demo sequence
 
 1. Start with Option 1.
 2. Add Option 2 to demonstrate GitOps.
 3. Add Option 3 if identity/SSO is part of the workshop.
-4. Use Option 4 to explain why secret management and network exposure remain independent of the deployment method.
+4. Use Option 4 to explain the separation of secrets and network exposure.
+5. Add Option 5 when the environment includes AVI/NSX Advanced Load Balancer and you want to demonstrate the alternate LB implementation.
