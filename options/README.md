@@ -1,5 +1,7 @@
 # Deployment Options
 
+![Complete Architecture Block Diagram](../docs/architecture-overview.svg)
+
 ![Deployment Options Block Diagram](architecture-options.svg)
 
 The demo is intentionally modular. Choose the deployment model that matches the lab objective.
