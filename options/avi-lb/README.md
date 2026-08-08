@@ -2,6 +2,8 @@
 
 This option demonstrates using **VMware AVI Load Balancer / NSX Advanced Load Balancer** as the external load-balancing integration for the VKS application.
 
+![AVI Load Balancer Block Diagram](architecture-block.svg)
+
 It is an optional networking path. The core demo continues to use the Kubernetes `Service` abstraction with `type: LoadBalancer`.
 
 ## Architecture
