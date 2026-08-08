@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+<defs><marker id="a" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L10,3 L0,6 Z" fill="#334155"/></marker></defs>
+<rect width="1200" height="760" fill="#f8fafc"/>
+<text x="600" y="42" text-anchor="middle" font-family="Arial" font-size="26" font-weight="700" fill="#0f172a">VKS Secret Store Demo — Deployment Options</text>
+
+<!-- Core -->
+<rect x="40" y="80" width="540" height="285" rx="18" fill="#ffffff" stroke="#94a3b8" stroke-width="2"/>
+<text x="60" y="112" font-family="Arial" font-size="20" font-weight="700" fill="#0f172a">Option 1 — Core / Manual</text>
+<text x="60" y="136" font-family="Arial" font-size="13" fill="#64748b">No GitOps; use kubectl while retaining centralized secrets</text>
+<rect x="70" y="165" width="150" height="62" rx="10" fill="#e0f2fe" stroke="#0284c7"/><text x="145" y="202" text-anchor="middle" font-family="Arial" font-size="15" font-weight="700">VCF Secret Store</text>
+<rect x="275" y="165" width="130" height="62" rx="10" fill="#ede9fe" stroke="#7c3aed"/><text x="340" y="202" text-anchor="middle" font-family="Arial" font-size="15" font-weight="700">VKS</text>
+<rect x="460" y="165" width="90" height="62" rx="10" fill="#dcfce7" stroke="#16a34a"/><text x="505" y="202" text-anchor="middle" font-family="Arial" font-size="14" font-weight="700">Flask</text>
+<line x1="220" y1="196" x2="275" y2="196" stroke="#334155" stroke-width="2" marker-end="url(#a)"/>
+<line x1="405" y1="196" x2="460" y2="196" stroke="#334155" stroke-width="2" marker-end="url(#a)"/>
+<rect x="175" y="265" width="190" height="60" rx="10" fill="#fef3c7" stroke="#d97706"/><text x="270" y="301" text-anchor="middle" font-family="Arial" font-size="14" font-weight="700">Foundation Load Balancer</text>
+<line x1="505" y1="227" x2="365" y2="265" stroke="#334155" stroke-width="2" marker-end="url(#a)"/>
+<text x="70" y="350" font-family="Arial" font-size="13" fill="#475569">kubectl apply → VKS → LoadBalancer VIP</text>
+
+<!-- GitOps -->
+<rect x="620" y="80" width="540" height="285" rx="18" fill="#ffffff" stroke="#94a3b8" stroke-width="2"/>
+<text x="640" y="112" font-family="Arial" font-size="20" font-weight="700" fill="#0f172a">Option 2 — GitOps App-of-Apps</text>
+<text x="640" y="136" font-family="Arial" font-size="13" fill="#64748b">Recommended production-style deployment path</text>
+<rect x="650" y="165" width="120" height="62" rx="10" fill="#f1f5f9" stroke="#475569"/><text x="710" y="202" text-anchor="middle" font-family="Arial" font-size="14" font-weight="700">GitHub</text>
+<rect x="820" y="165" width="120" height="62" rx="10" fill="#fef3c7" stroke="#d97706"/><text x="880" y="202" text-anchor="middle" font-family="Arial" font-size="14" font-weight="700">Argo CD</text>
+<rect x="990" y="165" width="120" height="62" rx="10" fill="#ede9fe" stroke="#7c3aed"/><text x="1050" y="202" text-anchor="middle" font-family="Arial" font-size="14" font-weight="700">VKS</text>
+<line x1="770" y1="196" x2="820" y2="196" stroke="#334155" stroke-width="2" marker-end="url(#a)"/><line x1="940" y1="196" x2="990" y2="196" stroke="#334155" stroke-width="2" marker-end="url(#a)"/>
+<rect x="805" y="265" width="150" height="60" rx="10" fill="#dcfce7" stroke="#16a34a"/><text x="880" y="301" text-anchor="middle" font-family="Arial" font-size="14" font-weight="700">Flask + PostgreSQL</text>
+<line x1="1050" y1="227" x2="955" y2="265" stroke="#334155" stroke-width="2" marker-end="url(#a)"/>
+<text x="640" y="350" font-family="Arial" font-size="13" fill="#475569">Root App → Child App → k8s/ manifests → self-healing</text>
+
+<!-- Pinniped -->
+<rect x="40" y="405" width="540" height="285" rx="18" fill="#ffffff" stroke="#94a3b8" stroke-width="2"/>
+<text x="60" y="437" font-family="Arial" font-size="20" font-weight="700" fill="#0f172a">Option 3 — Pinniped Identity Add-on</text>
+<text x="60" y="461" font-family="Arial" font-size="13" fill="#64748b">Optional OIDC authentication and Kubernetes RBAC</text>
+<rect x="70" y="490" width="120" height="62" rx="10" fill="#f1f5f9" stroke="#475569"/><text x="130" y="527" text-anchor="middle" font-family="Arial" font-size="14" font-weight="700">User</text>
+<rect x="235" y="490" width="130" height="62" rx="10" fill="#e0f2fe" stroke="#0284c7"/><text x="300" y="527" text-anchor="middle" font-family="Arial" font-size="14" font-weight="700">OIDC IdP</text>
+<rect x="410" y="490" width="130" height="62" rx="10" fill="#fce7f3" stroke="#db2777"/><text x="475" y="527" text-anchor="middle" font-family="Arial" font-size="14" font-weight="700">Pinniped</text>
+<line x1="190" y1="521" x2="235" y2="521" stroke="#334155" stroke-width="2" marker-end="url(#a)"/><line x1="365" y1="521" x2="410" y2="521" stroke="#334155" stroke-width="2" marker-end="url(#a)"/>
+<rect x="230" y="590" width="140" height="60" rx="10" fill="#ede9fe" stroke="#7c3aed"/><text x="300" y="626" text-anchor="middle" font-family="Arial" font-size="14" font-weight="700">VKS API + RBAC</text>
+<line x1="475" y1="552" x2="370" y2="590" stroke="#334155" stroke-width="2" marker-end="url(#a)"/>
+<text x="70" y="675" font-family="Arial" font-size="13" fill="#475569">Identity = who are you?  •  Secret Store remains independent</text>
+
+<!-- Non GitOps secret -->
+<rect x="620" y="405" width="540" height="285" rx="18" fill="#ffffff" stroke="#94a3b8" stroke-width="2"/>
+<text x="640" y="437" font-family="Arial" font-size="20" font-weight="700" fill="#0f172a">Option 4 — Secret + Network Path</text>
+<text x="640" y="461" font-family="Arial" font-size="13" fill="#64748b">Common flow shared by GitOps and non-GitOps modes</text>
+<rect x="650" y="490" width="150" height="62" rx="10" fill="#e0f2fe" stroke="#0284c7"/><text x="725" y="527" text-anchor="middle" font-family="Arial" font-size="14" font-weight="700">Secret Store</text>
+<rect x="850" y="490" width="120" height="62" rx="10" fill="#ede9fe" stroke="#7c3aed"/><text x="910" y="527" text-anchor="middle" font-family="Arial" font-size="14" font-weight="700">ExternalSecret</text>
+<rect x="1020" y="490" width="110" height="62" rx="10" fill="#dcfce7" stroke="#16a34a"/><text x="1075" y="527" text-anchor="middle" font-family="Arial" font-size="14" font-weight="700">Workload</text>
+<line x1="800" y1="521" x2="850" y2="521" stroke="#334155" stroke-width="2" marker-end="url(#a)"/><line x1="970" y1="521" x2="1020" y2="521" stroke="#334155" stroke-width="2" marker-end="url(#a)"/>
+<rect x="830" y="590" width="160" height="60" rx="10" fill="#fef3c7" stroke="#d97706"/><text x="910" y="626" text-anchor="middle" font-family="Arial" font-size="14" font-weight="700">Foundation LB / VIP</text>
+<line x1="1075" y1="552" x2="990" y2="590" stroke="#334155" stroke-width="2" marker-end="url(#a)"/>
+<text x="640" y="675" font-family="Arial" font-size="13" fill="#475569">Secrets, deployment, identity, and exposure stay separate</text>
+</svg>
