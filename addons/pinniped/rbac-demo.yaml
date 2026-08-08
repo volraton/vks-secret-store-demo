@@ -1,0 +1,23 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: demo-readonly
+  namespace: demo
+rules:
+  - apiGroups: [""]
+    resources: ["pods", "services"]
+    verbs: ["get", "list", "watch"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: demo-readonly
+  namespace: demo
+subjects:
+  - kind: Group
+    name: vks-demo-users
+    apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: demo-readonly
+  apiGroup: rbac.authorization.k8s.io
