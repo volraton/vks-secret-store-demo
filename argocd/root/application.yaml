@@ -3,8 +3,10 @@ kind: Application
 metadata:
   name: vks-secret-store-demo-root
   namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
-  project: default
+  project: vks-demo
   source:
     repoURL: https://github.com/volraton/vks-secret-store-demo.git
     targetRevision: main
