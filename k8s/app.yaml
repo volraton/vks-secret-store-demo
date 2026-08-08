@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: app
-          image: ghcr.io/volraton/vks-secret-store-demo:03f32308d244bccae99563aaec896ebec18697d6
+          image: ghcr.io/volraton/vks-secret-store-demo:7fce8b2417f2809debffca9758ea0bc293ee0e89
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
